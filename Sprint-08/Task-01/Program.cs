@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using System.Linq;
 
 namespace Task_01
 {
@@ -28,13 +27,10 @@ namespace Task_01
 
         public void StartEvaluation() 
         {
-            Thread thread = new Thread(() =>
-            {
-                Result = func(operand1, operand2);
-            });
+            Thread thread = new Thread(Evaluate);
             thread.Start();
         }
-        public async void Evaluate() 
+        public void Evaluate() 
         {
             Result = func(operand1, operand2);
         }
