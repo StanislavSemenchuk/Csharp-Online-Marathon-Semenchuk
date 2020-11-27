@@ -28,7 +28,9 @@ namespace Task_05
                     ThreadsDemo.ExtraEvaluation(i);
                 }
             }
+
             Thread.Yield();
+            
             lock (Den)
             {
                 for (int i = 0; i < 5; i++, m++)
@@ -44,14 +46,9 @@ namespace Task_05
                 for (int i = 0; i < 5; i++, m++)
                     Console.WriteLine("Thread2 m = " + m);
 
-                Thread.Yield();
-
-                lock (Ada)
-                {
-                    for (int i = 0; i < 5; i++, n++)
-                        Console.WriteLine("Thread2 n = " + n);
-                    Console.WriteLine("Thread2 success!");
-                }
+                for (int i = 0; i < 5; i++, n++)
+                    Console.WriteLine("Thread2 n = " + n);
+                Console.WriteLine("Thread2 success!");
             }
         });
     }
