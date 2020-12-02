@@ -18,13 +18,13 @@ namespace Task_05
     {
         public static async void PrintSpecificSeqElementsAsync(int[] specificInts)
         {
-            List<Task> tasks = new List<Task>();
+            Task[] tasks = new Task[specificInts.Length];
             Task allTasks = null;
             for (int i = 0; i < specificInts.Length; i++)
             {
                 int temp = specificInts[i];
                 var tempTask = Task.Run(() => Console.WriteLine("Seq[{0}] = {1}", temp, Calc.Seq(temp)));
-                tasks.Add(tempTask);
+                tasks[i] = tempTask;
             }
             try
             {
